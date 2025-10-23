@@ -1,0 +1,10 @@
+flask
+flask-cors
+python-dotenv
+google-generativeai
+pdfplumber
+pdfminer.six
+pillow
+reportlab
+python-docx
+gunicorn

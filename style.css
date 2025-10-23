@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f5a623;
+  --background-color: #f7f9fc;
+  --text-color: #333;
+  --light-text-color: #777;
+  --border-color: #e0e0e0;
+  --card-bg-color: #ffffff;
+
+  --dropzone-bg: #fdfefe;
+  --dropzone-border: #cfd8e3;
+  --dropzone-hover-bg: #f0f6ff;
+  --dropzone-hover-border: #4a90e2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 880px;
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+header h3 {
+  font-size: 1rem;
+  color: #0caa5b;
+  margin-top: 0;
+}
+
+header p {
+  font-size: 1.05rem;
+  color: var(--light-text-color);
+  margin-bottom: 30px;
+}
+
+/* 드래그&드롭 Dropzone */
+.file-label.dropzone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--dropzone-border);
+  border-radius: 12px;
+  padding: 44px 28px;
+  cursor: pointer;
+  background: var(--dropzone-bg);
+  transition: all 0.25s ease;
+}
+
+.file-label.dropzone:hover,
+.file-label.dropzone.dragover {
+  border-color: var(--dropzone-hover-border);
+  background-color: var(--dropzone-hover-bg);
+}
+
+.file-label #file-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.file-label #file-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.file-label .hint {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+}
+
+#file-name {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: var(--light-text-color);
+  font-weight: 700;
+}
+
+#generate-btn {
+  width: 100%;
+  background: linear-gradient(45deg, var(--primary-color), #357ABD);
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+#generate-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#generate-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5);
+}
+
+.spinner {
+  margin: 30px auto 14px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid var(--primary-color);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#result-container, #error-container {
+  margin-top: 32px;
+  text-align: left;
+}
+
+h2 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 1.35rem;
+}
+
+/* 원본 텍스트 접힘 영역 */
+.raw-toggle {
+  margin: 10px 0 14px;
+}
+
+.raw-area {
+  background: #f4f7fb;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  max-height: 280px;
+  overflow: auto;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+/* 마크다운 렌더 결과 */
+.markdown-body {
+  background-color: var(--background-color);
+  padding: 18px;
+  border-radius: 8px;
+  min-height: 240px;
+  max-height: 520px;
+  overflow: auto;
+  line-height: 1.8;
+  border: 1px solid var(--border-color);
+}
+
+/* 기본 마크다운 스타일 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+.markdown-body h1 { font-size: 1.6rem; }
+.markdown-body h2 { font-size: 1.4rem; }
+.markdown-body h3 { font-size: 1.2rem; }
+
+.markdown-body p { margin: 0.5em 0; }
+
+.markdown-body ul, .markdown-body ol {
+  margin: 0.5em 0 0.5em 1.2em;
+}
+
+.markdown-body code {
+  background: #f0f2f6;
+  border: 1px solid #e2e6ec;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+.markdown-body pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  overflow: auto;
+  border: 1px solid #1e293b;
+}
+
+/* 경고 영역 */
+#error-container {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.button-group {
+  margin-top: 16px;
+  text-align: right;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button-group button {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.1s;
+  font-weight: 700;
+}
+
+.button-group button:hover {
+  background-color: #e59400;
+}
+
+.button-group button:disabled {
+  background-color: #c9c9c9;
+  cursor: not-allowed;
+}
+
+footer {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.hidden { display: none; }
+
+/* 모바일 대응 */
+@media (max-width: 520px) {
+  .container { padding: 24px; }
+  header h1 { font-size: 1.8rem; }
+  .markdown-body { max-height: 60vh; }
+}
