@@ -40,7 +40,7 @@ CORS(app)
 
 try:
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-    model = genai.GenerativeModel('gemini-2.5-pro')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 except Exception as e:
     print(f"[WARN] Gemini 설정 실패: {e}")
     model = None
@@ -514,3 +514,4 @@ def healthz(): return "ok", 200
 
 @app.get("/")
 def root(): return "AI Interview Master backend running", 200
+
