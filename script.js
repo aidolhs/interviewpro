@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ✅ 항상 백엔드로 보내도록 BASE 고정 (혼합콘텐츠/다른 포트 문제 방지)
   //const API_BASE = window.API_BASE || 'http://127.0.0.1:5000';
-  const API_BASE = window.API_BASE || 'https://port-0-interviewmaster-mh1kppotb9275e59.sel3.cloudtype.app/';
+  const API_BASE = window.API_BASE || 'https://port-0-interviewpro-mh3iopw4cf627816.sel3.cloudtype.app';
   const GENERATE_URL = `${API_BASE}/generate`;
   const DOWNLOAD_URL = `${API_BASE}/download`;
 
@@ -265,4 +265,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.URL.revokeObjectURL(url);
   }
 });
+
 
