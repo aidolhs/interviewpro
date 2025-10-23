@@ -7,4 +7,5 @@ pdfminer.six
 pillow
 reportlab
 python-docx
+matplotlib
 gunicorn
